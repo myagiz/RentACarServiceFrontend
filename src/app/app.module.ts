@@ -21,8 +21,9 @@ import { RentalComponent } from './components/rental/rental.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

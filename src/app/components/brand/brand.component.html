@@ -1,11 +1,3 @@
 <ul class="list-group">
-    <li class="list-group-item" >
-   TEST
-    </li>
-    <li class="list-group-item" >
-      TEST
-       </li>
-       <li class="list-group-item" >
-        TEST
-         </li>
-  </ul>
+  <li class="list-group-item" *ngFor="let item of brands">{{ item.name }}</li>
+</ul>
