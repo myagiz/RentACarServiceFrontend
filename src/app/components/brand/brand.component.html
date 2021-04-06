@@ -1,5 +1,8 @@
 <ul class="list-group">
-  <li (click)="setCurrentBrand(item)" *ngFor="let item of brands" [class]="getCurrentBrandClass(item)" >{{ item.name }}</li>
+  <li (click)="setCurrentBrand(item)" 
+  routerLink="/cars/brand/{{item.brandId}}"
+  *ngFor="let item of brands" 
+  [class]="getCurrentBrandClass(item)" >{{ item.name }}</li>
 </ul>
 
 <h5 *ngIf="currentBrand">{{currentBrand.name}} Seçildi</h5>
