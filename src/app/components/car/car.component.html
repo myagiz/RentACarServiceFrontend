@@ -12,6 +12,7 @@
       <th>Marka</th>
       <th>Renk</th>
       <th>Bilgi</th>
+      <th>İşlem</th>
     </tr>
   </thead>
   <tbody>
@@ -19,10 +20,13 @@
       <td>{{ car.carId }}</td>
       <td>{{ car.carName }}</td>
       <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.dailyPrice }} TL</td>
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.description }}</td>
+      <td><a class="btn btn-warning" >
+        <i class="fas fa-car"></i> Araç Kirala
+      </a> </td>
     </tr>
   </tbody>
 </table>
