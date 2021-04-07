@@ -1,14 +1,30 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
   <span class="sr-only">Loading...</span>
 </div>
-
-<table *ngIf="dataLoaded!=false" class="table">
+<div class="form-group" style="margin-top: 15px">
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Kiralamak İstediğiniz Aracı Aratabilirsiniz..."
+  />
+</div>
+<div *ngIf="filterText" class="alert alert-warning" role="alert">
+ <strong>{{filterText}} aradınız. </strong> 
+</div>
+<!-- <table *ngIf="dataLoaded != false" class="table">
   <thead>
     <tr>
       <th>Id</th>
       <th>Ad</th>
       <th>Model</th>
       <th>Fiyat</th>
+      <th>Kdv'li Fiyat</th>
       <th>Marka</th>
       <th>Renk</th>
       <th>Bilgi</th>
@@ -16,17 +32,82 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
+    <tr *ngFor="let car of cars |filterPipe:filterText">
       <td>{{ car.carId }}</td>
-      <td>{{ car.carName }}</td>
+      <td>{{ car.carName | uppercase }}</td>
       <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }} TL</td>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.colorName }}</td>
+      <td>{{ car.dailyPrice | currency: "TRY":"₺":"" }}</td>
+      <td>{{ car.dailyPrice | vatAdded: 18 | currency: "TRY":"₺":"" }}</td>
+      <td>{{ car.brandName | uppercase }}</td>
+      <td>{{ car.colorName | uppercase }}</td>
       <td>{{ car.description }}</td>
-      <td><a class="btn btn-warning" >
-        <i class="fas fa-car"></i> Araç Kirala
-      </a> </td>
+      <td>
+        <a class="btn btn-warning"> <i class="fas fa-car"></i> Araç Kirala </a>
+      </td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+
+
+<div
+        class="d-flex flex-wrap justify-content-center justify-content-xl-start"
+        style="gap: 4.35em; padding: 0; margin-top: 20px"
+      >
+        <div
+          class="carousel-item"
+          *ngFor="let car of cars |filterPipe:filterText"
+          class="card"
+          style="width: 18rem"
+        >
+          <div>
+            <img
+              src="#"
+              class="card-img-top"
+              alt="carImage"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ car.brandName | uppercase }}</h5>
+            <p class="card-text">{{ car.carName | uppercase }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>Renk: </b> {{ car.colorName | uppercase }}
+            </li>
+            <li class="list-group-item">
+              <b>Model Yıl: </b>{{ car.modelYear }}
+            </li>
+            <li class="list-group-item">
+              <b>Fiyat: </b>{{ car.dailyPrice | currency: "TRY":"₺":""  }}
+            </li>
+            <li class="list-group-item">
+              <b>KDV'li Fiyat: </b>{{ car.dailyPrice | vatAdded: 18 | currency: "TRY":"₺":""  }}
+            </li>
+            <li class="list-group-item">
+              <b>Findeks Puanı: </b>
+            </li>
+          </ul>
+          <div class="card-body">
+            <div>
+              <button
+                type="button"
+                class="btn btn-warning mr-sm-2"
+                routerLink="/cars/detail/{{ car.carId }}"
+              >
+               <i class="fas fa-info-circle"></i>
+               Detaylar
+              </button>
+              <button
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              type="button"
+              class="btn btn-success"
+              routerLink="#"
+            >
+             <i class="fas fa-car"></i>
+             Aracı Kirala
+            </button>
+            </div>
+          </div>
+        </div>

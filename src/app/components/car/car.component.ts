@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  carDetail:CarDetail;
   dataLoaded = false;
+  filterText="";
 
   constructor(
     private carService: CarService,
@@ -36,6 +39,13 @@ export class CarComponent implements OnInit {
 
   getCarsByBrandId(brandId: number) {
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
+  getDetailsByCarId(carId:number){
+    this.carService.getCarsByBrandId(carId).subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
     });

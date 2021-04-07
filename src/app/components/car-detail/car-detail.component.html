@@ -1,0 +1,19 @@
+<div class="container">
+<table>
+    <tbody>
+        <tr *ngFor="let car of carDetail" >
+          <td>{{ car.carId }}</td>
+          <td>{{ car.carName | uppercase }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice | currency: "TRY":"₺":"" }}</td>
+          <td>{{ car.dailyPrice | vatAdded: 18 | currency: "TRY":"₺":"" }}</td>
+          <td>{{ car.brandName | uppercase }}</td>
+          <td>{{ car.colorName | uppercase }}</td>
+          <td>{{ car.description }}</td>
+          <td>
+            <a class="btn btn-warning"> <i class="fas fa-car"></i> Araç Kirala </a>
+          </td>
+        </tr>
+      </tbody>
+</table>
+</div>

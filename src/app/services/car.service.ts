@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
+import { CarDetail } from '../models/carDetail';
 import { ListResponseModel } from '../models/listResponseModel';
 
 
@@ -24,5 +25,6 @@ export class CarService {
     return this.httpClient
      .get<ListResponseModel<Car>>(newPath);
    }
+
 }
   
