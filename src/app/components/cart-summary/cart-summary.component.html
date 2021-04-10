@@ -1,4 +1,4 @@
-<li *ngIf="cartItems.length>0" class="nav-item dropdown">
+<!-- <li *ngIf="cartItems.length>0" class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Sepetiniz
     </a>
@@ -7,4 +7,17 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" >Sepete Git</a>
     </div>
-  </li>
+  </li> -->
+
+
+  <ul *ngIf="cartItems.length>0" class="list-group">
+    <li class="list-group-item list-group-item-warning" style="text-align: center;"><b style="color: black;"> SEPETİNİZ</b></li>
+    <li *ngFor="let item of cartItems" class="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
+    <!-- <span (click)="removeFromCart(item.car)" ><i class="fas fa-window-close"></i></span> -->
+      <span class="badge" style="color: black;"><i (click)="removeFromCart(item.car)" class="fas fa-window-close" style="color: red;"></i> {{item.car.brandName}} - {{item.car.carName}} - {{item.car.dailyPrice | currency: "TRY":"₺":"" }}</span>
+      <span class="badge badge-dark badge-pill">{{item.quantity}}</span>
+    </li>
+    <button class="btn btn-success btn-block">SEPETE GİT <i class="fas fa-shopping-basket"></i></button>
+  </ul>
+
+  

@@ -5,7 +5,7 @@
     routerLink="/cars"
     [class]="getAllBrandClass()"
   >
-    <b>TÜM ARAÇLAR</b>
+  <span class="badge">TÜM ARAÇLAR</span>
   </li>
 
   <li
@@ -14,7 +14,7 @@
     *ngFor="let item of brands"
     [class]="getCurrentBrandClass(item)"
   >
-    {{ item.name }}
+   <span class="badge"> {{ item.name }}</span>
   </li>
 </ul>
 
